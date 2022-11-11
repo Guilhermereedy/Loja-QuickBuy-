@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace QuickBuy.Dominio.Entidades
+namespace QuickBuy.Repositorio.Repositorios
 {
-    internal class Entidades
+    internal class Cliente
     {
     }
 }
