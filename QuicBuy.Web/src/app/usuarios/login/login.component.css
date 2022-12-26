@@ -1,0 +1,29 @@
+﻿.form-singin {
+
+   width: 100%;
+    max-width: 420px;
+    padding: 15px;
+    margin: auto;
+}
+.form-singin input[type="email"] {
+  background-color: black;
+    margin-bottom: -1px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.form-singin input[type="password"] {
+  background-color: black;
+    margin-bottom: -1px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.form-singin .form.control {
+  background-color: black;
+    position: relative;
+    box-sizing: border-box;
+    height: auto;
+    padding: 10px;
+    font-size: 16px;
+}
