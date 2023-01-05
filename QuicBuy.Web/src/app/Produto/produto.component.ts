@@ -26,7 +26,6 @@ export class ProdutoComponent implements OnInit {
   public inputChange(files: FileList) {
     this.arquivoSelecionado = files.item(0);
     this.produtoService.enviarArquivo(this.arquivoSelecionado)
-
    .subscribe(
     retorno => {
       console.log(retorno);

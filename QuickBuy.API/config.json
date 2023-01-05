@@ -1,0 +1,9 @@
+{
+  "ConnectionString": {
+    "SqlServerConnection": "connect:Server=GUILHERMECOSTA\\SQLEXPRESS;Database=prod;Trusted_Connection=True;MultipleActiveResultSets=true"
+
+    //"MySqlConnection": "Server=127.0.0.1;Uid=root;Pwd=myPassword;database=Gui"
+  }
+}
+
+

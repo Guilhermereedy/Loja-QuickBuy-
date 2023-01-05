@@ -1,8 +1,0 @@
-{
-  "ConnectionString": {
-    "SqlServerConnection": "",
-    "MySqlConnection": "Server=127.0.0.1;Uid=root;Pwd=myPassword;database=Gui"
-  }
-}
-
-
