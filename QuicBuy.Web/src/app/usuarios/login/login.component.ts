@@ -1,5 +1,9 @@
-﻿import { Component } from "@angular/core";
-import { Usuario } from "src/model/usuario";
+﻿import { Component, OnInit } from "@angular/core";
+
+import { ActivatedRoute, Router } from "@angular/router";
+import { UsuarioServices } from "src/app/services/usuario/usuario.services";
+
+import { Usuario } from "src/app/model/usuario";
 
 
 
@@ -10,19 +14,61 @@ import { Usuario } from "src/model/usuario";
 })
 
 
-export class LoginComponent {
+export class LoginComponent implements OnInit{
   public usuario;
-  public usuarioAutenticado: boolean;
-  public usuarios =["usuario1", "usuario2", "usuario3"];
+  public returnUrl: string ;
+  public mensagem: string;
+  private ativar_spinnner: boolean;
 
-constructor() {
+constructor(private router: Router, private activatedRoute: ActivatedRoute,
+    private usuarioServices: UsuarioServices) {
 
-  this.usuario = new Usuario();
+
  }
+
+  ngOnInit(): void
+  {
+    this.usuario = new Usuario();
+    this.returnUrl = this.activatedRoute.snapshot.queryParams['returnUrl'];
+
+  }
 
   entrar() {
 
-    alert(this.usuario.email + " - " + this.usuario.senha);
+    this.ativar_spinnner = true;
+
+    this.usuarioServices.verficarUsuario(this.usuario)
+      .subscribe(
+        usuario_json => {
+          //essa linha será executada no caso de retorno sem erros
+         this.usuarioServices.usuario = usuario_json;
+
+          if( this.returnUrl == null)
+
+          {
+            this.router.navigate(['/']);
+          }
+
+          else
+
+          {
+            this.router.navigate([this.returnUrl]);
+          }
+
+          this.router.navigate([this.returnUrl]);
+
+        },
+        err =>{
+
+          this.mensagem = err.error;
+
+        }
+      );
+
+   //if(this.usuario.email == "guilhermereedy@gmail.com" && this.usuario.senha == "123")
+    //sessionStorage.setItem("usuario-autenticado", "1");
+    //this.router.navigate([this.returnUrl]);
 
   }
 }
+

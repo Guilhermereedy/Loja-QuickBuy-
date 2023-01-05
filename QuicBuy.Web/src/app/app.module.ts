@@ -10,6 +10,11 @@ import { HomeComponent } from './home/home.component';
 import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { LoginComponent } from './usuarios/login/login.component';
+import { ProdutoComponent } from './produto/produto.component';
+import { GuardaRotas } from './autorizacao/guarda.rotas';
+import { UsuarioServices } from './services/usuario/usuario.services';
+import { CadastroUsuarioComponent } from './usuarios/cadastro/cadastro.usuario.component';
+import { ProdutoServices } from './services/produto/produto.services';
 
 @NgModule({
   declarations: [
@@ -18,7 +23,9 @@ import { LoginComponent } from './usuarios/login/login.component';
     HomeComponent,
     CounterComponent,
     FetchDataComponent,
-    LoginComponent
+    LoginComponent,
+    ProdutoComponent,
+    CadastroUsuarioComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -26,12 +33,13 @@ import { LoginComponent } from './usuarios/login/login.component';
     FormsModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
-      { path: 'counter', component: CounterComponent },
-      { path: 'fetch-data', component: FetchDataComponent },
+
+      { path: 'produto', component: ProdutoComponent, canActivate: [GuardaRotas] },
       { path: 'entrar', component: LoginComponent},
+      { path: 'cadastro-usuario', component: CadastroUsuarioComponent},
     ])
   ],
-  providers: [],
+  providers: [UsuarioServices, ProdutoServices],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

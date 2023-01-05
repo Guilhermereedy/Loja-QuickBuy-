@@ -50,7 +50,12 @@
   </div>
 
 
-  <button type="button" class="btn btn-dark"type="submit" (click)="entrar">Entrar</button>
+  <button class="btn btn-dark btn-block mb-3" type="submit" (click)="entrar()" [disabled]="ativar_spinner">
+    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="ativar_spinner"></span>
+    Entrar
+  </button>
+
+  <div>Novo por aqui? <a [routerLink]='["/cadastro-usuario"]' >Cadastre-se</a></div>
 
 
 </form>

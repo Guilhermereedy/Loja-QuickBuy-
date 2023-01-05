@@ -1,18 +1,57 @@
-import { Component } from "@angular/core"
+
+import { Component, OnInit } from "@angular/core"
+import { Produto } from "../model/produto";
+import { ProdutoServices } from "../services/produto/produto.services";
+import { Router } from "@angular/router";
+
 
 @Component({
   selector: "app-produto",
-  template:"<html><body>{{ obterNome()}}}</body></html>"
+  templateUrl: "./produto.component.html",
+  styleUrls: ["./produto.component.css"]
 })
 
-export class ProdutoComponent
-{
-  // Nome das classes começando com maiusculo por conta da converção PascalCase
-  //camelCase para variáveis, atributos e nomes das funcções
-  public nome: string;
-  public LiberadoParaVenda: boolean;
+export class ProdutoComponent implements OnInit {
 
-  public obterNome(): string {
-    return "Samsung";
+  public produto: Produto;
+  public arquivoSelecionado: File;
+
+  constructor(private produtoService: ProdutoServices) { }
+
+
+  ngOnInit(): void {
+    this.produto = new Produto();
   }
+
+  public inputChange(files: FileList) {
+    this.arquivoSelecionado = files.item(0);
+    this.produtoService.enviarArquivo(this.arquivoSelecionado)
+
+   .subscribe(
+    retorno => {
+      console.log(retorno);
+    },
+    err => {
+      console.log(err.error);
+    }
+   );
+
+  }
+
+  public cadastrar() {
+    //this.produto
+    this.produtoService.cadastrar(this.produto)
+      .subscribe(
+        produtoJson => {
+          console.log(produtoJson);
+        },  );
+
+        err => {
+          console.log(err.error);
+        }
+
 }
+}
+
+
+
