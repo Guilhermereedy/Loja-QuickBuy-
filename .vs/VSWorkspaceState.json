@@ -1,10 +1,10 @@
 {
   "ExpandedNodes": [
     "",
-    "\\QuickBuy.Dominio",
-    "\\QuickBuy.Repositorio",
-    "\\QuickBuy.Repositorio\\Contexto",
-    "\\QuickBuy.Web"
+    "\\QuickBuy",
+    "\\QuickBuy\\QuickBuy.Web",
+    "\\QuickBuy\\QuickBuy.Web\\Controllers"
   ],
+  "SelectedNode": "\\QuickBuy\\QuickBuy.Web\\Controllers\\ProdutoController.cs",
   "PreviewInSolutionExplorer": false
 }

@@ -15,6 +15,7 @@ export class ProdutoComponent implements OnInit {
 
   public produto: Produto;
   public arquivoSelecionado: File;
+  public ativar_spinner: boolean;
 
   constructor(private produtoService: ProdutoServices) { }
 
@@ -25,10 +26,14 @@ export class ProdutoComponent implements OnInit {
 
   public inputChange(files: FileList) {
     this.arquivoSelecionado = files.item(0);
+    this.ativar_spinner = true;
     this.produtoService.enviarArquivo(this.arquivoSelecionado)
    .subscribe(
-    retorno => {
-      console.log(retorno);
+    nomeArquivo => {
+      this.produto.nomeArquivo = nomeArquivo;
+      alert(this.produto.nomeArquivo);
+      console.log(nomeArquivo);
+      this.ativar_spinner = false;
     },
     err => {
       console.log(err.error);

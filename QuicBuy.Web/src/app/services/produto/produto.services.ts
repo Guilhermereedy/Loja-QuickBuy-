@@ -72,10 +72,10 @@ public deletar(produto: Produto): Observable<Produto>
 
   }
 
-  enviarArquivo(arquivoSelecionado: File) : Observable<boolean> {
+  enviarArquivo(arquivoSelecionado: File) : Observable<string> {
     const formData: FormData = new FormData();
     formData.append("arquivoEnviado", arquivoSelecionado, arquivoSelecionado.name);
-    return this.http.post<boolean>(this._baseUrl + "api/produto/enviarArquivo", formData);
+    return this.http.post<string>(this._baseUrl + "api/produto/enviarArquivo", formData);
   }
 
 }
