@@ -65,9 +65,9 @@ constructor(private router: Router, private activatedRoute: ActivatedRoute,
         }
       );
 
-   //if(this.usuario.email == "guilhermereedy@gmail.com" && this.usuario.senha == "123")
-    //sessionStorage.setItem("usuario-autenticado", "1");
-    //this.router.navigate([this.returnUrl]);
+   if(this.usuario.email == "guilhermereedy@gmail.com" && this.usuario.senha == "123")
+    sessionStorage.setItem("usuario-autenticado", "1");
+    this.router.navigate([this.returnUrl]);
 
   }
 }

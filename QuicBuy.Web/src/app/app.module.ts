@@ -37,6 +37,7 @@ import { ProdutoServices } from './services/produto/produto.services';
       { path: 'produto', component: ProdutoComponent, canActivate: [GuardaRotas] },
       { path: 'entrar', component: LoginComponent},
       { path: 'cadastro-usuario', component: CadastroUsuarioComponent},
+
     ])
   ],
   providers: [UsuarioServices, ProdutoServices],
